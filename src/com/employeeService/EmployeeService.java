@@ -46,12 +46,24 @@ public class EmployeeService {
 		printElement();
 	}
 	public void sortEmployeeByFirstName() {
-		Comparator<Employee> compareByFirstName = (Employee o1, Employee o2) -> o1.getFirstName().compareTo( o2.getFirstName() );
+		Comparator<Employee> compareByFirstName = (Employee o1, Employee o2) -> {
+			if(o1.getFirstName().equalsIgnoreCase(o2.getFirstName())) {
+				 return o1.getLastName().compareTo( o2.getLastName());
+			 } else {
+				 return o1.getFirstName().compareTo( o2.getFirstName() );
+			 }
+		 };
 		Collections.sort(getEmployee(), compareByFirstName);
 		printElement();
 	}
 	public void sortEmployeeByLastName() {
-		Comparator<Employee> compareByLastName = (Employee o1, Employee o2) -> o1.getLastName().compareTo( o2.getLastName() );
+		Comparator<Employee> compareByLastName = (Employee o1, Employee o2) -> {
+			if(o1.getLastName().equalsIgnoreCase(o2.getLastName())) {
+				 return o1.getFirstName().compareTo( o2.getFirstName() );
+			 } else {
+				 return o1.getLastName().compareTo( o2.getLastName());
+			 }
+		 };	
 		Collections.sort(getEmployee(), compareByLastName);
 		printElement();
 	}

@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.collectionProject.Person;
-
+import java.lang.Math;
+import java.math.BigDecimal; 
 public class PersonService {
 	
 	private List<Person> person = new ArrayList<>();
@@ -28,12 +29,19 @@ public class PersonService {
 		person.add(new Person(1,"Gopal", 180000f));
 		return this.person;
 	}
+	public void setPerson(List<Person> person){
+		this.person = person;
+	}
+
 	public Map<Float, Person> transform(List<Person> p){
 		Map<Float, Person> transformed = new HashMap<>();
 		for(int i = 0;i<p.size();i++) {
 			float id = p.get(i).getId();
-			while(transformed.get(id) != null) {
-				id = id + 0.1f;  
+			int j = 0;
+			while(transformed.containsKey(id)) {
+				j = j+ 1;
+				double x = Math.pow(10,-(j));
+				id = id + (float)x;  
 			}
 			transformed.put(id,p.get(i));									
 		}
@@ -46,8 +54,7 @@ public class PersonService {
 		}
 	 }
 	public void show(Map<Float,Person> mapPerson) {
-		DecimalFormat df = new DecimalFormat("#.0");
-		mapPerson.forEach((k,v)->System.out.println("Mapped Person Key : " + df.format(k) + ", Value : " + v));		
+		mapPerson.forEach((k,v)->System.out.println("Mapped Person Key : " + k + ", Value : " + v));		
 		System.out.println("\n");
 	}
 		

@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.employeeService.EmployeeService;
+import com.employeeService.MimicSetService;
 import com.employeeService.PersonService;
+import com.employeeService.ReadFromUserService;
 
 public class Main {		
 	public static void main(String[] args) {
@@ -15,9 +17,9 @@ public class Main {
 			while(c != 0) {
 				switch(c) {
 					case 1:
-						ListObject ob = new ListObject();
+						ReadFromUserService sc = new ReadFromUserService();
 						List elements =  Arrays.asList("One",2,"ABC",67.986,'Z',true,123,false,"xyz");
-						ob.modifyElement(scan,elements);
+						sc.modifyElement(scan,elements);
 						break;
 					case 2:
 						EmployeeService eservice = new EmployeeService();
@@ -25,10 +27,19 @@ public class Main {
 						eservice.sortEmployee(scan);
 						System.out.println("\n");
 						break;
+					case 3:
+						System.out.println("Mimicking Set Using Array: \n");
+						MimicSetService s = new MimicSetService();
+						MimicSetUsingArray arr = new MimicSetUsingArray();
+						s.mimicSet(scan, arr);
+						break;
 					case 4:
 						PersonService pservice = new PersonService();
-						pservice.show(pservice.transform(pservice.generateList()));
+						pservice.setPerson(pservice.generateList());
+						System.out.println("Before Mapping, List Data: \n");
 						pservice.show(pservice.getPerson());
+						System.out.println("\nAfter Mapping, Mapped Data: \n");
+						pservice.show(pservice.transform(pservice.getPerson()));
 						System.out.println("\n");
 					case 0:
 						break;
