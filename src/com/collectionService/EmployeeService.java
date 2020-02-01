@@ -1,4 +1,4 @@
-package com.employeeService;
+package com.collectionService;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,7 +14,7 @@ public class EmployeeService {
 		return employee;
 	}
 	
-	public void addEmployee(Employee emp) {
+	public int addEmployee(Employee emp) {
 		boolean check = true;
 		for (Employee e : this.getEmployee()) {
 			if (e.getId() == emp.getId()) {
@@ -22,8 +22,10 @@ public class EmployeeService {
 			}
 	      }
 		if (check) {
-			this.getEmployee().add(emp);			
+			this.getEmployee().add(emp);
+			return emp.getId();
 		}
+		return 0;
 	}
 	
 	public void printElement() {
@@ -56,6 +58,7 @@ public class EmployeeService {
 		Collections.sort(getEmployee(), compareByFirstName);
 		printElement();
 	}
+	
 	public void sortEmployeeByLastName() {
 		Comparator<Employee> compareByLastName = (Employee o1, Employee o2) -> {
 			if(o1.getLastName().equalsIgnoreCase(o2.getLastName())) {

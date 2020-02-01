@@ -1,4 +1,4 @@
-package com.employeeService;
+package com.collectionService;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -14,11 +14,12 @@ public class PersonService {
 	private List<Person> person = new ArrayList<>();
 
 	public List<Person> getPerson() {
-		return person;
+		return this.person;
 	}
 
-	public void addPerson(Person person) {
+	public int addPerson(Person person) {
 		getPerson().add(person);
+		return person.getId();
 	}
 
 	public List<Person> generateList(){
@@ -29,6 +30,7 @@ public class PersonService {
 		person.add(new Person(1,"Gopal", 180000f));
 		return this.person;
 	}
+	
 	public void setPerson(List<Person> person){
 		this.person = person;
 	}

@@ -8,7 +8,7 @@ public class MimicSetUsingArray  {
   // create a new array of size n+1 
     Object arr[] = new Object[length]; 
 
-	public int size() {
+    public int size() {
 		return Array.getLength(arr);
 	}
 	public boolean inArray(Object E) {

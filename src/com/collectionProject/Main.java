@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import com.employeeService.EmployeeService;
-import com.employeeService.MimicSetService;
-import com.employeeService.PersonService;
-import com.employeeService.ReadFromUserService;
+import com.collectionService.EmployeeService;
+import com.collectionService.MimicSetService;
+import com.collectionService.PersonService;
+import com.collectionService.ReadFromUserService;
 
 public class Main {		
 	public static void main(String[] args) {

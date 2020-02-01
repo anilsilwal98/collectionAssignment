@@ -1,4 +1,4 @@
-package com.employeeService;
+package com.collectionService;
 
 import java.util.Scanner;
 
@@ -6,34 +6,41 @@ import com.collectionProject.MimicSetUsingArray;
 
 public class MimicSetService {
 
-	public void addElement(Scanner scan, MimicSetUsingArray arr) {
+	public Object addElement(Scanner scan, MimicSetUsingArray arr) {
 		if(scan.hasNextBoolean()) {
 			boolean val = scan.nextBoolean();
 			arr.add(val);
+			return val;
 		}
 		else if(scan.hasNextInt()){
 			int val = scan.nextInt();						
 			arr.add(val);
+			return val;
 		}
 		else if(scan.hasNextFloat()){
 			float val = scan.nextFloat();			
 			arr.add(val);
+			return val;
 		}
 		else if(scan.hasNextDouble()){
 			double val = scan.nextDouble();	
 			arr.add(val);	
+			return val;
 		}
-		else if(scan.hasNext()){
+		else {
 			String val  = scan.next();
 			if(val.length()==1) {
 				char v = val.charAt(0);
 				arr.add(v);	
-			}else {
-				arr.add(val);					
+				return v;
+			}else if((val.length()>1)) {
+				arr.add(val);
+				return val;
 			}
-		}
-		else {
-			System.out.println("\nNull values or duplicates are not allowed");			
+			else {
+				System.out.println("\nNull values or duplicates are not allowed");			
+				return null;
+			}
 		}
 	}
 	
